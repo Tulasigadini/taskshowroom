@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+header h1{
+  height: 20px;
+  text-align: center;
+  color: #4e0e0e;
+}
+header h2{
+  height: 10px;
+  margin-left: 5px;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+
+}
+main{
+  margin-left: 20px;
+}
+footer{
+  height: 30px;
+  background-color: #031227;
+  color: #6e0404;
+
+}
+
+
+.nav {
+  background-color: #05104e;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.nav a {
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 10px;
+  width: auto;
+  text-align: center;
+}
+
+.nav a:hover {
+  background-color: #fff;
+  color: #253ab1;
+  width: auto;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+}
+
+
+.container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.cards {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card {
+  flex: 0 0 100%;
+  border-radius: 15px;
+  background-color: #1c153f;
+  color: #fff;
+  padding: 1rem;
+  box-sizing: border-box;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 24px;
+  padding: 1rem;
+  background: #585151;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+@media screen and (max-width: 600px) {
+  .button-container {
+      flex-wrap: wrap;
+  }
+  .button-container button {
+      flex: 0 0 100%;
+  }
+}
+
+
+.slider-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.box {
+  width: 100%;
+  height: 100px;
+  background-color: #242734;
+  color: white;
+  flex-shrink: 0;
+  margin-top: 5px;
+  max-width: 300px;
+  margin-right: 10px;
+  padding: 20px;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.slider-controls button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #072e5b;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+
+</style>
+<body>
+
+  <header>
+    <h1>Zuxr</h1>
+    <h2>welcome, <span style="color:rgb(32, 7, 143)">{{ request.user.username }}!</span></h2>
+
+  </header>
+  <div class="nav">
+    <a href="{% url 'home' %}">Home</a>       
+    <a href="{% url 'task_list' %}">Tasks</a>      
+    <a href="{% url 'services' %}">Services</a>
+    <a href="{% url 'contact' %}">contact</a>    
+
+  </div>
+    <div class="container">
+        <div class="cards">
+            <div class="card">
+                <h1>Tulasi sai kumar</h1>
+                <p>Apprelia</p>
+            </div>
+            <div class="card">
+                <h1>Sudhanva</h1>
+                <p>Duke</p>
+            </div>
+            <div class="card">
+                <h1>Sai kiran</h1>
+                <p>Pulsar</p>
+            </div>
+        </div>
+        <div class="prev" onclick="slidePrev()">&#10094;</div>
+        <div class="next" onclick="slideNext()">&#10095;</div>
+    </div>
+    </div>
+   
+   
+    <div class="slider-container">
+        <div class="slider">
+            <div class="box">pulsar</div>
+            <div class="box">duke</div>
+            <div class="box">ninja</div>
+            <div class="box">r15 </div>
+            <div class="box">suzuki</div>
+            <div class="box">kia</div>
+            <div class="box">audi</div>
+            <div class="box">hundai</div>
+            <div class="box">tata</div>
+            <div class="box">apprelia</div>
+
+        </div>
+    </div>
+    <div class="slider-controls">
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+    </div>
+  <div>
+    
+  </div>
+    
+    <main>
+      <section>
+        <h2>indian model</h2>
+        <p>model xr</p>
+        <p>ABS</p>
+        <p>mono suspension</p>
+        <p>sports bike</p>
+      </section>
+  
+     
+    </main>
+  
+    
+    <footer>
+      <p>&copy; 2023 Your Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const slider = document.querySelector(".slider");
+const boxWidth = document.querySelector(".box").offsetWidth;
+const numVisibleBoxes = Math.floor(window.innerWidth / boxWidth);
+
+let translateX = 0;
+
+prevBtn.addEventListener("click", () => {
+    if (translateX < 0) {
+        translateX += boxWidth;
+        slider.style.transform = `translateX(${translateX}px)`;
+    }
+});
+
+nextBtn.addEventListener("click", () => {
+    if (translateX > -(boxWidth * (10 - numVisibleBoxes))) {
+        translateX -= boxWidth;
+        slider.style.transform = `translateX(${translateX}px)`;
+    }
+});
+
+window.addEventListener("resize", () => {
+    const numVisibleBoxes = Math.floor(window.innerWidth / boxWidth);
+    if (translateX < -(boxWidth * (5 - numVisibleBoxes))) {
+        translateX = -(boxWidth * (5 - numVisibleBoxes));
+        slider.style.transform = `translateX(${translateX}px)`;
+    }
+});
+
+const slidePrev = () => {
+    const cards = document.querySelector('.cards');
+    cards.insertBefore(cards.lastElementChild, cards.firstElementChild);
+};
+
+const slideNext = () => {
+    const cards = document.querySelector('.cards');
+    cards.appendChild(cards.firstElementChild);
+};
+    </script>
+</body>

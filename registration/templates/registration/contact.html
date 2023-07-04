@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+header h1{
+  height: 40px;
+  text-align: center;
+  color: #6e0404;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+
+}
+main{
+  margin-left: 20px;
+}
+
+
+.nav {
+  background-color: #05104e;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.nav a {
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 10px;
+  width: auto;
+  text-align: center;
+}
+
+.nav a:hover {
+  background-color: #fff;
+  color: #253ab1;
+  width: auto;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+}
+.container{
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .button-container {
+      flex-wrap: wrap;
+  }
+  .button-container button {
+      flex: 0 0 100%;
+  }
+}
+
+</style>
+<body>
+  <div class="nav">
+    <a href="{% url 'home' %}">Home</a>       
+    <a href="{% url 'task_list' %}">Tasks</a>      
+    <a href="{% url 'services' %}">Services</a>
+    <a href="{% url 'contact' %}">contact</a>    
+  </div>
+  <div class="container">
+    <h1>Contact Details</h1>
+    <div class="contact-details">
+        <p><strong>Company Name:</strong>Zuxr</p>
+        <p><strong>Address:</strong>madhapur,hyderabad,telangana,India</p>
+        <p><strong>Phone:</strong> 8712387892</p>
+        <p><strong>Email:</strong> tskgadini@gmail.com</p>
+    </div>
+</div>
+
+</body>

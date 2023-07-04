@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+
+}
+main{
+  margin-left: 20px;
+}
+
+
+.nav {
+  background-color: #05104e;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.nav a {
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 10px;
+  width: auto;
+  text-align: center;
+}
+
+.nav a:hover {
+  background-color: #fff;
+  color: #253ab1;
+  width: auto;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+}
+.service{
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .button-container {
+      flex-wrap: wrap;
+  }
+  .button-container button {
+      flex: 0 0 100%;
+  }
+}
+
+</style>
+<body>
+
+  <div class="nav">
+    <a href="{% url 'home' %}">Home</a>       
+    <a href="{% url 'task_list' %}">Tasks</a>      
+    <a href="{% url 'services' %}">Services</a>
+    <a href="{% url 'contact' %}">contact</a>    
+  </div>
+  <div class="services-container">
+    <div class="service">
+        <h2>Free test ride</h2>
+        <p>10km</p>
+    </div>
+    <div class="service">
+        <h2>free helmate</h2>
+        <p>inbult 1st aid kit and sports Hellmate</p>
+    </div>
+    <div class="service">
+        <h2>free petrol</h2>
+        <p>2 lit</p>
+    </div>
+    <div class="service">
+        <h2>free bike wash</h2>
+        <p>1 year</p>
+    </div>
+</div>
+
+</body>
